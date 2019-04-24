@@ -19,15 +19,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotesCell" id="mxt-Ds-yub">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NotesCell" textLabel="hS4-n1-wB8" detailTextLabel="6KT-pn-Ube" style="IBUITableViewCellStyleSubtitle" id="mxt-Ds-yub">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mxt-Ds-yub" id="W6Y-FC-5ZI">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hS4-n1-wB8">
+                                            <rect key="frame" x="20" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6KT-pn-Ube">
+                                            <rect key="frame" x="20" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="P1c-JI-aiu" kind="show" identifier="EditNote" id="VvQ-60-1WL"/>
+                                    <segue destination="P1c-JI-aiu" kind="show" identifier="EditNote" id="4jh-nP-Jmb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -97,7 +113,7 @@
                     <navigationItem key="navigationItem" title="Note" id="o1F-pV-N0O">
                         <barButtonItem key="rightBarButtonItem" title="Save" style="plain" id="1B6-QO-VEt">
                             <connections>
-                                <action selector="saveButtonPressed:" destination="P1c-JI-aiu" id="HLf-Js-w4z"/>
+                                <action selector="saveButtonPressed:" destination="P1c-JI-aiu" id="E2k-SI-pt3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -132,6 +148,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VvQ-60-1WL"/>
+        <segue reference="4jh-nP-Jmb"/>
     </inferredMetricsTieBreakers>
 </document>
