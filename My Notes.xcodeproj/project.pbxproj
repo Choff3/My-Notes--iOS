@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F908ACC226F7F380034E98A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F908ACB226F7F380034E98A /* AppDelegate.swift */; };
-		3F908ACE226F7F380034E98A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F908ACD226F7F380034E98A /* ViewController.swift */; };
+		3F70F096226F80B4008BBF1D /* MyNotesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F70F08F226F80B4008BBF1D /* MyNotesModel.xcdatamodeld */; };
+		3F70F098226F80B4008BBF1D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70F093226F80B4008BBF1D /* ListViewController.swift */; };
+		3F70F099226F80B4008BBF1D /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70F094226F80B4008BBF1D /* NoteViewController.swift */; };
+		3F70F09A226F80B4008BBF1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70F095226F80B4008BBF1D /* AppDelegate.swift */; };
 		3F908AD1226F7F380034E98A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F908ACF226F7F380034E98A /* Main.storyboard */; };
-		3F908AD4226F7F380034E98A /* My_Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F908AD2226F7F380034E98A /* My_Notes.xcdatamodeld */; };
 		3F908AD6226F7F390034E98A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F908AD5226F7F390034E98A /* Assets.xcassets */; };
 		3F908AD9226F7F390034E98A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F908AD7226F7F390034E98A /* LaunchScreen.storyboard */; };
 		3F908AE4226F7F390034E98A /* My_NotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F908AE3226F7F390034E98A /* My_NotesTests.swift */; };
@@ -35,11 +36,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F70F090226F80B4008BBF1D /* MyNotesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyNotesModel.xcdatamodel; sourceTree = "<group>"; };
+		3F70F093226F80B4008BBF1D /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		3F70F094226F80B4008BBF1D /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		3F70F095226F80B4008BBF1D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F908AC8226F7F380034E98A /* My Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Notes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F908ACB226F7F380034E98A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3F908ACD226F7F380034E98A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3F908AD0226F7F380034E98A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3F908AD3226F7F380034E98A /* My_Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = My_Notes.xcdatamodel; sourceTree = "<group>"; };
 		3F908AD5226F7F390034E98A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F908AD8226F7F390034E98A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F908ADA226F7F390034E98A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,13 +101,14 @@
 		3F908ACA226F7F380034E98A /* My Notes */ = {
 			isa = PBXGroup;
 			children = (
-				3F908ACB226F7F380034E98A /* AppDelegate.swift */,
-				3F908ACD226F7F380034E98A /* ViewController.swift */,
 				3F908ACF226F7F380034E98A /* Main.storyboard */,
 				3F908AD5226F7F390034E98A /* Assets.xcassets */,
 				3F908AD7226F7F390034E98A /* LaunchScreen.storyboard */,
 				3F908ADA226F7F390034E98A /* Info.plist */,
-				3F908AD2226F7F380034E98A /* My_Notes.xcdatamodeld */,
+				3F70F095226F80B4008BBF1D /* AppDelegate.swift */,
+				3F70F093226F80B4008BBF1D /* ListViewController.swift */,
+				3F70F08F226F80B4008BBF1D /* MyNotesModel.xcdatamodeld */,
+				3F70F094226F80B4008BBF1D /* NoteViewController.swift */,
 			);
 			path = "My Notes";
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				TargetAttributes = {
 					3F908AC7226F7F380034E98A = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 					3F908ADE226F7F390034E98A = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -259,9 +263,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F908ACE226F7F380034E98A /* ViewController.swift in Sources */,
-				3F908AD4226F7F380034E98A /* My_Notes.xcdatamodeld in Sources */,
-				3F908ACC226F7F380034E98A /* AppDelegate.swift in Sources */,
+				3F70F099226F80B4008BBF1D /* NoteViewController.swift in Sources */,
+				3F70F096226F80B4008BBF1D /* MyNotesModel.xcdatamodeld in Sources */,
+				3F70F09A226F80B4008BBF1D /* AppDelegate.swift in Sources */,
+				3F70F098226F80B4008BBF1D /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +441,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "My Notes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -444,6 +450,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tba.My-Notes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -453,6 +460,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "My Notes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -586,13 +594,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3F908AD2226F7F380034E98A /* My_Notes.xcdatamodeld */ = {
+		3F70F08F226F80B4008BBF1D /* MyNotesModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				3F908AD3226F7F380034E98A /* My_Notes.xcdatamodel */,
+				3F70F090226F80B4008BBF1D /* MyNotesModel.xcdatamodel */,
 			);
-			currentVersion = 3F908AD3226F7F380034E98A /* My_Notes.xcdatamodel */;
-			path = My_Notes.xcdatamodeld;
+			currentVersion = 3F70F090226F80B4008BBF1D /* MyNotesModel.xcdatamodel */;
+			path = MyNotesModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

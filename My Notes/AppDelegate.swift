@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  My Notes
+//  MyNotes
 //
-//  Created by Teddy Hoff on 4/23/19.
+//  Created by Teddy Hoff on 4/19/19.
 //  Copyright © 2019 TBA. All rights reserved.
 //
 
@@ -16,7 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let settings = UserDefaults.standard
+        
+        if(settings.string(forKey: "sortField") == nil){
+            settings.set("date", forKey: "sortField")
+        }
+        
+        settings.synchronize()
+        print("Sort field: \(settings.string(forKey: "sortField")!)")
         return true
     }
 
@@ -53,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "My_Notes")
+        let container = NSPersistentContainer(name: "MyNotesModel")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
