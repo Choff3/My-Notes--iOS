@@ -30,6 +30,7 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         if(currentNote != nil) {
             txtTitle.text = currentNote!.title
             txtContent.text = currentNote!.content
+            pckImportance.selectRow(Int(currentNote!.importance)-1, inComponent:0, animated:true)
             appDelegate.saveContext()
             //TODO: make the importance picker set to importance
         }
