@@ -14,11 +14,13 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     var currentNote: Note?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let importanceItems: Array<String> = ["Low", "Medium", "High"]
+    var importance: Int = 1
     
     @IBOutlet weak var txtTitle: UITextField!
     @IBOutlet weak var txtContent: UITextView!
     @IBOutlet weak var pckImportance: UIPickerView!
     @IBOutlet weak var btnSave: UIBarButtonItem!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,8 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         }
         else{
             currentNote?.title = "Title"
-            currentNote?.content = "Content"
+            txtContent.text = "Content"
+            txtContent.textColor = UIColor.lightGray
             currentNote?.importance = 1
             currentNote?.date = Date()
         }
@@ -42,6 +45,13 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
                                 action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)),
                                 for: UIControl.Event.editingDidEnd)
         // Do any additional setup after loading the view. 
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
@@ -63,6 +73,9 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             let context = appDelegate.persistentContainer.viewContext
             currentNote = Note(context: context)
         }
+        currentNote?.title = txtTitle.text
+        currentNote?.content = txtContent.text
+        currentNote?.importance = Int64(importance)
         appDelegate.saveContext()
         
         let alert = UIAlertController(title: "Success",
@@ -98,7 +111,42 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
       //  let impField = importanceItems[row]
         currentNote?.importance = Int64(row) + 1
+        importance = row + 1
       //  print("Imp: \(currentNote!.importance)")
+    }
+    
+    func registerKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(NoteViewController.keyboardDidShow(notification:)), name:
+            UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(NoteViewController.keyboardWillHide(notification:)), name:
+            UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func unregisterKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardDidShow(notification: NSNotification) {
+        let userInfo: NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardInfo = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue
+        let keyboardSize = keyboardInfo.cgRectValue.size
+        
+        // Get the existing contentInset for the scrollView and set the bottom property to be the height of the keyboard
+        var contentInset = self.scrollView.contentInset
+        contentInset.bottom = keyboardSize.height
+        
+        self.scrollView.contentInset = contentInset
+        self.scrollView.scrollIndicatorInsets = contentInset
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        var contentInset = self.scrollView.contentInset
+        contentInset.bottom = 0
+        
+        self.scrollView.contentInset = contentInset
+        self.scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
 
 }
