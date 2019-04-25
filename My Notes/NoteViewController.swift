@@ -39,7 +39,6 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             txtContent.text = "Content"
             txtContent.textColor = UIColor.lightGray
             currentNote?.importance = 1
-            currentNote?.date = Date()
         }
         
         txtTitle.addTarget(self,
@@ -77,6 +76,7 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         currentNote?.title = txtTitle.text
         currentNote?.content = txtContent.text
         currentNote?.importance = Int64(importance)
+        currentNote?.date = Date()
         appDelegate.saveContext()
         
         let alert = UIAlertController(title: "Success",

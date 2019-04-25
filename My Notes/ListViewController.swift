@@ -27,8 +27,8 @@ class ListViewController: UITableViewController {
         }
         
         settings.synchronize()
-        
-        self.viewDidLoad()
+        self.tableView.reloadData()
+        self.viewWillAppear(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,17 +43,15 @@ class ListViewController: UITableViewController {
         //Read settings to enable sorting
         let settings = UserDefaults.standard
         let sortField = settings.string(forKey: "sortField")
-        var asc = true
         if sortField == "importance"{
             sgmtSort.selectedSegmentIndex = 1
-            asc = false
         }
         //Set up Core Data Context
         let context = appDelegate.persistentContainer.viewContext
         //Set up Request
         let request = NSFetchRequest<NSManagedObject>(entityName: "Note")
         //Specify sorting
-        let sortDescriptor = NSSortDescriptor(key: sortField, ascending: asc)
+        let sortDescriptor = NSSortDescriptor(key: sortField, ascending: false)
         let sortDescriptorArray = [sortDescriptor]
         //to sort by multiple fields, add more sort descriptors to the array
         request.sortDescriptors = sortDescriptorArray
@@ -97,7 +95,7 @@ class ListViewController: UITableViewController {
             strImp = "Low"
         }
         
-        cell.detailTextLabel?.text = "Created: \(strDate)                                   Importance: \(strImp)" //String(note?.date)
+        cell.detailTextLabel?.text = "Created: \(strDate)                              Importance: \(strImp)" //String(note?.date)
         cell.accessoryType = UITableViewCell.AccessoryType.none
         return cell
     }
