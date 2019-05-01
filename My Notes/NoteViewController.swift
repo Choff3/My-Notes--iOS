@@ -39,9 +39,9 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         }
         
         txtTitle.addTarget(self,
-                                action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)),
-                                for: UIControl.Event.editingDidEnd)
-        // Do any additional setup after loading the view. 
+                           action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)),
+                           for: UIControl.Event.editingDidEnd)
+        // Do any additional setup after loading the view.
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
@@ -68,17 +68,16 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         let alert = UIAlertController(title: "Success",
                                       message: "Your note has been saved.",
                                       preferredStyle: UIAlertController.Style.alert)
-            
-            let cancelAction = UIAlertAction(title: "OK",
-                                             style: .cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            UIApplication.shared.keyWindow?.rootViewController!.present(alert, animated: true,
-                                                                                                   completion: nil)
+        
+        let cancelAction = UIAlertAction(title: "OK",
+                                         style: .cancel, handler: nil)
+        
+        alert.addAction(cancelAction)
+        UIApplication.shared.keyWindow?.rootViewController!.present(alert, animated: true,
+                                                                    completion: nil)
         
     }
 
-    // Returns the number of 'columns' to display.
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -96,9 +95,9 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     //If the user chooses from the pickerview, it calls this function;
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-      //  let impField = importanceItems[row]
+        //  let impField = importanceItems[row]
         currentNote?.importance = Int64(row) + 1
-      //  print("Imp: \(currentNote!.importance)")
+        //  print("Imp: \(currentNote!.importance)")
     }
 
 }
