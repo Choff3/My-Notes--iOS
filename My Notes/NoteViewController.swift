@@ -14,6 +14,7 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     var currentNote: Note?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let importanceItems: Array<String> = ["Low", "Medium", "High"]
+    var importance: Int = 1
     
     @IBOutlet weak var txtTitle: UITextField!
     @IBOutlet weak var txtContent: UITextView!
@@ -28,20 +29,28 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         if(currentNote != nil) {
             txtTitle.text = currentNote!.title
             txtContent.text = currentNote!.content
+            pckImportance.selectRow(Int(currentNote!.importance)-1, inComponent:0, animated:true)
             appDelegate.saveContext()
             //TODO: make the importance picker set to importance
         }
         else{
             currentNote?.title = "Title"
-            currentNote?.content = "Content"
+            txtContent.text = "Content"
+            txtContent.textColor = UIColor.lightGray
             currentNote?.importance = 1
-            currentNote?.date = Date()
         }
         
         txtTitle.addTarget(self,
                            action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)),
                            for: UIControl.Event.editingDidEnd)
         // Do any additional setup after loading the view.
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
@@ -63,6 +72,10 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             let context = appDelegate.persistentContainer.viewContext
             currentNote = Note(context: context)
         }
+        currentNote?.title = txtTitle.text
+        currentNote?.content = txtContent.text
+        currentNote?.importance = Int64(importance)
+        currentNote?.date = Date()
         appDelegate.saveContext()
         
         let alert = UIAlertController(title: "Success",
@@ -78,6 +91,7 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         
     }
 
+    // Returns the number of 'columns' to display.
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -97,6 +111,7 @@ class NoteViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //  let impField = importanceItems[row]
         currentNote?.importance = Int64(row) + 1
+        importance = row + 1
         //  print("Imp: \(currentNote!.importance)")
     }
 
